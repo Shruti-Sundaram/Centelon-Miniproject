@@ -1,9 +1,5 @@
 <?php
-      session_start();
-    
-    
-
-
+      
     $errors = array();
     //connect to db
     $db = mysqli_connect('localhost','root','','resgistration');
@@ -28,7 +24,7 @@
              $password = md5($password_1); //encrypts pw before storing(for security)
              $sql = "INSERT INTO users(username, name, stream, dob, email, phone, gender, password) VALUES('$username', '$name', '$stream', '$dob', '$email', '$phone', '$gender', '$password')";
              mysqli_query($db,$sql);
-             $SESION['name']=$name;
+             $SESSION['name']=$name;
              $SESSION['success']="You are now logged in";
              header('location: index.php');
              }
