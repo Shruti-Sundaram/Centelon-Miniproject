@@ -1,11 +1,24 @@
 <?php
       
+    $serverName='localhost';
+    $userName = 'root';
+    $password = '';
+    $dbName = 'resgistration';
+    
+    $con = mysqli_connect($serverName, $userName, $password, $dbName);
+    if(mysqli_connect_errno()){
+        echo "Failed to connect";
+        exit();
+     }
+     echo "Connection success";
+   
+    
     $errors = array();
     //connect to db
     $db = mysqli_connect('localhost','root','','resgistration');
 
     //once register btn is clicked
-    if(isset($_POST['register'])) {
+    if (isset($_POST['register'])) {
         $username = mysql_real_escape_string($_POST['username']);
         $name = mysql_real_escape_string($_POST['name']);
         $stream = mysql_real_escape_string($_POST['stream']);
@@ -16,7 +29,7 @@
         $password_1 = mysql_real_escape_string($_POST['password_1']);
         $password_2 = mysql_real_escape_string($_POST['password_2']);
 
-        if($password_1!=$password_2){
+        if($password_1 != $password_2){
              array_push($errors, "The two passwords do not match");
              }
 
