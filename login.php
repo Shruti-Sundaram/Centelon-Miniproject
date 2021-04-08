@@ -10,7 +10,7 @@
 </div>
 <form method="post" action="login.php">
  <div class="input-group">
-    Username: <input type="text" name="username" required><br>
+    Username: <input type="text" name="username" required><br><br>
     Password: <input type="password" name="pw1" required><br><br>
     <button type="submit" name="login" class="btn">Login</button>
  </div>
