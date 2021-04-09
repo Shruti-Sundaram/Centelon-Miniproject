@@ -15,31 +15,31 @@
     
     $errors = array();
     //connect to db
-    $db = mysqli_connect('localhost','root','','resgistration');
+   // $db = mysqli_connect('localhost','root','','resgistration');
 
     //once register btn is clicked
-    if (isset($_POST['register'])) {
-        $username = mysql_real_escape_string($_POST['username']);
-        $name = mysql_real_escape_string($_POST['name']);
-        $stream = mysql_real_escape_string($_POST['stream']);
-        $dob = mysql_real_escape_string($_POST['dob']);
-        $email = mysql_real_escape_string($_POST['email']);
-        $phone = mysql_real_escape_string($_POST['phone']);
-        $gender = mysql_real_escape_string($_POST['gender']);
-        $password_1 = mysql_real_escape_string($_POST['password_1']);
-        $password_2 = mysql_real_escape_string($_POST['password_2']);
 
-        if($password_1 != $password_2){
-             array_push($errors, "The two passwords do not match");
+    if(isset($_POST['register'])) {
+       
+        $username = $_POST['username'];
+        $name = $_POST['name'];
+        $stream = $_POST['stream'];
+        $dob = $_POST['dob'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $gender = $_POST['gender'];
+        $password = $_POST['password'];
+        
+      
+        $query = "insert into users(username, name, stream, dob, email, phone, gender, password) values('$username', '$name', '$stream', '$dob', '$email', '$phone', '$gender', '$password')";
+        $run = mysqli_query($con,$query) ;
+
+        if($run){
+                  echo "form submitted";
+         }else{
+                  echo "Form not submitted";
              }
 
-        if(count($errors)==0){
-             $password = md5($password_1); //encrypts pw before storing(for security)
-             $sql = "INSERT INTO users(username, name, stream, dob, email, phone, gender, password) VALUES('$username', '$name', '$stream', '$dob', '$email', '$phone', '$gender', '$password')";
-             mysqli_query($db,$sql);
-             $SESSION['name']=$name;
-             $SESSION['success']="You are now logged in";
-             header('location: index.php');
-             }
+          
       }
 ?>
