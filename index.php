@@ -22,7 +22,7 @@
 </div>
 <?php endif ?>
 <?php if(isset($_SESSION["username"])): ?>
-<p>Welcome<strong><?php echo $_SESSION['name']; ?></p>
+     <p>Welcome<strong><?php echo $_SESSION['name']; ?></strong></p>
 <p><a href="" style="color: blue;">Student Details</a></p>
 <p><a href="" style="color: red;">Logout</a></p>
 </div>
